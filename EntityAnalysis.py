@@ -4,7 +4,7 @@ import os
 from google.cloud import language_v1
 from google.cloud.language_v1 import enums
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'Google_Service_Account_key/YHackAdroit-9cc91ec87298.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/miles/PycharmProjects/kvetchtech/api/google_credentials.json'
 
 def sample_analyze_entities(text_content):
     """
@@ -60,11 +60,4 @@ def sample_analyze_entities(text_content):
     print(u"Language of the text: {}".format(response.language))
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description=__doc__,
-        formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        'movie_review_filename',
-        help='The filename of the movie review you\'d like to analyze.')
-    args = parser.parse_args()
-    sample_analyze_entities("Wow - I’m not having a great first time experience with JetBlue my flight that was scheduled for 10:20am departure got moved to 12:45, then 2, and now 3PM. This is ridiculous!")
+    print(sample_analyze_entities("Wow - I’m not having a great first time experience with JetBlue my flight that was scheduled for 10:20am departure got moved to 12:45, then 2, and now 3PM. This is ridiculous!"))
