@@ -7,7 +7,7 @@ from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '../Google_Service_Account_key/YHackAdroit-9cc91ec87298.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'Google_Service_Account_key/YHackAdroit-9cc91ec87298.json'
 
 def print_result(annotations):
     score = annotations.document_sentiment.score
