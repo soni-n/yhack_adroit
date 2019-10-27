@@ -1,6 +1,4 @@
-# yhack_adroit
-
-# Adroit
+# Adroit (Server)
 Adroit is an easy-to-use reputation and sentiment analysis tool. Enter a search term and see what complaints people have about it, and get a summary of the most frequent commentary!
 
 Check it out [here!](https://yhack-adroit.firebaseapp.com/)
