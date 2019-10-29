@@ -24,16 +24,6 @@ def sample_analyze_entities(text_content):
             #analysis['salience_score'] = "{}".format(entity.salience)
             entityAnalysis.append("{}".format(entity.name))
         #entityAnalysis.append(analysis)
-        # print(u"Representative name for the entity: {}".format(entity.name))
-        # print(u"Entity type: {}".format(enums.Entity.Type(entity.type).name))
-        # print(u"Salience score: {}".format(entity.salience))
-        # for metadata_name, metadata_value in entity.metadata.items():
-        #     print(u"{}: {}".format(metadata_name, metadata_value))
-        # for mention in entity.mentions:
-        #     print(u"Mention text: {}".format(mention.text.content))
-        #     print(
-        #         u"Mention type: {}".format(enums.EntityMention.Type(mention.type).name)
-        #     )
     return entityAnalysis
 
 def sample_analyze_sentiment(text_content):
@@ -45,8 +35,6 @@ def sample_analyze_sentiment(text_content):
     document = {"content": text_content, "type": type_, "language": language}
     encoding_type = enums.EncodingType.UTF8
     response = client.analyze_sentiment(document, encoding_type=encoding_type)
-    # print(u"Sentence text: {}".format(document["content"]))
-    # print(u"Sentence sentiment score: {}".format(response.document_sentiment.score))
     if (response.document_sentiment.score < 0.1):
         output["review"] = document["content"]
         output["score"] = response.document_sentiment.score
