@@ -6,8 +6,7 @@ from builtins import map, len, range
 from google.cloud import language_v1
 from google.cloud.language_v1 import enums
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'Google_Service_Account_key/YHackAdroit-9cc91ec87298.json'
-
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/miles/PycharmProjects/kvetchtech/api/google_credentials.json'
 def sample_analyze_entities(text_content):
     entityAnalysis = []
     client = language_v1.LanguageServiceClient()
@@ -55,20 +54,13 @@ def analyze(filename):
     with open(filename, 'r') as input_file:
         for i_line, line in enumerate(input_file):
             result = sample_analyze_sentiment(line)
-            negativeSentiments.append(result[0])
+            if result[0] != {}: negativeSentiments.append(result[0])
             entityData.append(result[1])
     topConcernAreas = extractTopTenConcernAreas(entityData)
     return negativeSentiments, topConcernAreas
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description=__doc__,
-        formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        'movie_review_filename',
-        help='The filename of the movie review you\'d like to analyze.')
-    args = parser.parse_args()
-    result = analyze(args.movie_review_filename)
+    result = analyze('/home/miles/PycharmProjects/yhack_adroit/tweets.txt')
     output = {}
     output['sentiments'] = result[0]
     output['concerns'] = result[1]
